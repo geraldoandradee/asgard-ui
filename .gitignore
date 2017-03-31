@@ -17,3 +17,4 @@ target/
 
 dist/
 src/js/config/config.dev.js
+*.sw[p|o]
