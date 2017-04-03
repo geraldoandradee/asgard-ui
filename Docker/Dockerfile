@@ -7,32 +7,28 @@ ARG NODE_VERSION="5.4.1"
 
 ENV NODE_URL="https://nodejs.org/download/release/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz"
 
-RUN apk -U --no-cache add git tar xz curl python
-RUN apk -U --no-cache add make gcc g++ linux-headers libgcc libstdc++ binutils-gold 
-RUN curl -sL "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz" | tar Jxvf - 
-RUN cd "node-v$NODE_VERSION" \
-&& ./configure --prefix=/usr --without-snapshot --fully-static 
-
-RUN cd "node-v$NODE_VERSION" \
-&& make -j2 \
-&& make install
-
-RUN apk --purge del make gcc g++ linux-headers libgcc libstdc++ binutils-gold 
-RUN cd .. 
-RUN rm -Rf "node-v$NODE_VERSION"
-
 WORKDIR /opt/app
 
-COPY package.json /opt/app
-RUN npm install
-RUN npm install -g gulp
+RUN apk -U --no-cache add git tar xz curl python \
+&& apk -U --no-cache add make gcc g++ linux-headers libgcc libstdc++ binutils-gold \
+&& curl -sL "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz" | tar Jxvf - \
+&& cd "node-v$NODE_VERSION" \
+&& ./configure --prefix=/usr --without-snapshot --fully-static \
+&& make -j2 \
+&& make install \
+&& apk --purge del make gcc g++ linux-headers libgcc libstdc++ binutils-gold \
+&& cd .. \
+&& rm -Rf "node-v$NODE_VERSION"
 
+WORKDIR /opt/app
+COPY package.json /opt/app
 COPY . /opt/app
 COPY Docker/files/config.js /opt/app/src/js/config/
-RUN gulp
 
-#ENTRYPOINT ["/e", "--render-template /etc/cofnig.js:/opt/app/dist/src/js/config/config.js"]
-
+RUN npm install \
+&& npm install -g gulp \
+&& gulp \
+&& rm -rf node_modules /tmp/npm* /root/.npm
 
 CMD ["uwsgi", "--buffer-size", "32768",\
 "--static-map", "/=/opt/app/dist" ,\
