@@ -6,6 +6,9 @@ FROM docker.sieve.com.br/infra/nodejs541:0.0.1
 WORKDIR /opt/app
 COPY package.json /opt/app
 
+COPY Docker/files/e /e
+RUN chmod 755 /e
+
 COPY . /opt/app
 RUN npm install \
       && npm install -g gulp \
@@ -14,10 +17,19 @@ RUN npm install \
 
 COPY Docker/files/config.js /opt/app/src/js/config/
 
-RUN mkdir -pv /opt/app/dist/login
-COPY Docker/files/login.html /opt/app/dist/login/index.html
+RUN mkdir -pv /opt/app/dist/login \
+&& mkdir -pv /opt/app/dist/authenticated
+COPY Docker/files/login.html.template /tmp
+COPY Docker/files/authenticated.html /opt/app/dist/authenticated/index.html
 
-CMD ["uwsgi", "--buffer-size", "32768",\
+#http://localhost:5000/login/google
+
+ENTRYPOINT ["/e" \
+  , "--render-template=/tmp/login.html.template:/opt/app/dist/login/index.html" \
+  , "--" \
+]
+
+CMD ["/usr/bin/uwsgi", "--buffer-size", "32768",\
 "--static-map", "/=/opt/app/dist" ,\
 "--http", "0.0.0.0:80",\
 "--processes", "1",\

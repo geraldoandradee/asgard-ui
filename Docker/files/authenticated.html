@@ -1,0 +1,28 @@
+<html>
+
+  <script>
+  console.log("init");
+  var qs = function(paramsArray) {
+        let params = {};
+
+        for (let i = 0; i < paramsArray.length; ++i)
+        {
+            let param = paramsArray[i]
+                .split('=', 2);
+
+            if (param.length !== 2)
+                continue;
+
+            params[param[0]] = decodeURIComponent(param[1].replace(/\+/g, " "));
+        }
+
+        return params;
+  };
+
+  var QueryString = qs(window.location.search.substr(1).split('&'));
+  localStorage.setItem("auth_token", QueryString["jwt"]);
+
+  window.location.href = "/";
+  </script>
+
+</html>
