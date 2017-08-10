@@ -12,10 +12,13 @@ var ajaxWrapper = function (opts = {}) {
     method: "GET",
     headers: {
       "Accept": "application/json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     }
   };
   var options = Util.extendObject(defaults, opts);
+
+  var token = localStorage.getItem("auth_token");
+  options.headers["Authorization"] = "JWT " + token;
 
   if (!options.concurrent) {
     if (uniqueCalls.indexOf(options.url) > -1) {
