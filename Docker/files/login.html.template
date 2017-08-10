@@ -1,0 +1,12 @@
+<html>
+
+  <script>
+    location.href = "{{.SIEVE_LOGIN_REDIRECT}}";
+  </script>
+
+  <body>
+  </body>
+
+
+
+</html>
