@@ -1,6 +1,6 @@
 FROM docker.sieve.com.br/infra/nodejs541:0.0.1
 
-#Version: 0.0.2
+#Version: 0.0.3
 #Tag: infra/marathon-ui
 
 WORKDIR /opt/app
@@ -10,12 +10,12 @@ COPY Docker/files/e /e
 RUN chmod 755 /e
 
 COPY . /opt/app
+COPY Docker/files/config.js /opt/app/src/js/config/
 RUN npm install \
       && npm install -g gulp \
       && gulp \
       && rm -rf node_modules /tmp/npm* /root/.npm
 
-COPY Docker/files/config.js /opt/app/src/js/config/
 
 RUN mkdir -pv /opt/app/dist/login \
 && mkdir -pv /opt/app/dist/authenticated
