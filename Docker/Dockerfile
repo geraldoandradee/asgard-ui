@@ -1,6 +1,6 @@
 FROM docker.sieve.com.br/infra/nodejs541:0.0.1
 
-#Version: next
+#Version: 0.0.6
 #Tag: infra/marathon-ui
 
 WORKDIR /opt/app
