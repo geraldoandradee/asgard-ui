@@ -1,6 +1,12 @@
 # UI
 
 
+## Changelog
+
+ * 0.0.7
+   > UI atualizada para versão `1.1.7`
+
+
 ## Fluxo de desenvolvimento
 
 A branch `master` deve sempre ficar *identica* à branch master do projeto original (mesosphere/marathon-ui).

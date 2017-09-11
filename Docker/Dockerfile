@@ -1,10 +1,9 @@
 FROM docker.sieve.com.br/infra/nodejs541:0.0.1
 
-#Version: 0.0.6
+#Version: 0.0.7
 #Tag: infra/marathon-ui
 
 WORKDIR /opt/app
-COPY package.json /opt/app
 
 COPY Docker/files/e /e
 RUN chmod 755 /e
