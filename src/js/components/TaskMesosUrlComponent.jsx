@@ -4,6 +4,10 @@ import InfoActions from "../actions/InfoActions";
 import InfoEvents from "../events/InfoEvents";
 import InfoStore from "../stores/InfoStore";
 
+/* eslint-disable camelcase */
+import jwt_decode from "jwt-decode";
+/* eslint-enable camelcase */
+
 var TaskMesosUrlComponent = React.createClass({
   displayName: "TaskMesosUrlComponent",
   propTypes: {
@@ -45,6 +49,11 @@ var TaskMesosUrlComponent = React.createClass({
           return null;
         }
         masterUrl = masterUrl.replace(/\/?$/, "/");
+        var authToken = jwt_decode(localStorage.getItem("auth_token"));
+        var namespace = "";
+        if (authToken.current_account.namespace) {
+          namespace = authToken.current_account.namespace + "_";
+        }
         return [
           masterUrl,
           "#/slaves/",
@@ -52,7 +61,7 @@ var TaskMesosUrlComponent = React.createClass({
           "/frameworks/",
           frameworkId,
           "/executors/",
-          task.id
+          namespace + task.id
         ].join("");
       }
     }
