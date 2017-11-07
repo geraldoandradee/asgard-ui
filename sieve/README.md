@@ -3,7 +3,7 @@
 
 ## Changelog
 
- * next
+ * 0.0.8
    > Adição do namespace no link pro mesos sandbox
    > Adição do logo do projeto Asgard
  * 0.0.7
