@@ -6,6 +6,7 @@
  * 0.0.8
    > Adição do namespace no link pro mesos sandbox
    > Adição do logo do projeto Asgard
+   > Mudança da URL da API para https://api-asgard.sieve.com.br/
  * 0.0.7
    > UI atualizada para versão `1.1.7`
 
