@@ -3,6 +3,9 @@
 
 ## Changelog
 
+ * next
+   > Adição do namespace no link pro mesos sandbox
+   > Adição do logo do projeto Asgard
  * 0.0.7
    > UI atualizada para versão `1.1.7`
 
