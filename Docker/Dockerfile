@@ -10,6 +10,7 @@ RUN chmod 755 /e
 
 COPY . /opt/app
 COPY Docker/files/config.js /opt/app/src/js/config/
+COPY Docker/files/logo_asgard.png /opt/app/src/img/marathon-logo.png
 RUN npm install \
       && npm install -g gulp \
       && gulp \
@@ -20,7 +21,6 @@ RUN mkdir -pv /opt/app/dist/login \
 && mkdir -pv /opt/app/dist/authenticated
 COPY Docker/files/login.html.template /tmp
 COPY Docker/files/authenticated.html /opt/app/dist/authenticated/index.html
-COPY Docker/files/logo_asgard.png /opt/app/dist/src/img/marathon-logo.png
 
 #http://localhost:5000/login/google
 
