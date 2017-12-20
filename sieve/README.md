@@ -3,6 +3,8 @@
 
 ## Changelog
 
+ * 0.0.9
+   > Exportando ajaxWrapper para o objeto Sieve. Depois vamos remover o commit onde ele é exportado diretamente para os plugins
  * 0.0.8
    > Adição do namespace no link pro mesos sandbox
    > Adição do logo do projeto Asgard
