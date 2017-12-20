@@ -64,3 +64,22 @@ commits com `CHERRY-PICK PR/813` e depois fazer o rebase.
 
 Tentaremos manter os commits `MARATHON-MERGE*` juntos, de preferência logo no ínício da branch `sievetech`. Para isso ser possível, faremos 
 o rewrite do histórico com certa frequência. Atentar para branches já abertas no momento em que fizermos esses rewrites.
+
+
+## Commits atualmente em nossa branch como resuldato de cherry-picks
+
+
+# Commits do PR 813: Exporting ajaxWrapper and config to UI plugins
+# https://github.com/mesosphere/marathon-ui/pull/813/
+```
+c8e0e04232fa047e17422d9607dd8e24ec101787 Exporting ajaxWrapper and config do UI plugins
+4d3a079fc46ed7173a457689d9b65bf14f4464cd Freezing config and not exporting UIVersion
+7d4f957e76363cb5cf39285c30f50b33aab69b3a Exporting the new PluginAPI with 2 namespaces
+2cffa4e070015c6556af17b03e40356eb2ebad25 Removing ajaxWrapper, now using the new PluginAPI
+dc3531dc3e938ce1d8c40a9c97b784aa23bbbd04 Changing namespace methods to be all static
+28e1b3b523192b5403904365176f3988ed31e4e8 Adding *.swp do .gitignore
+07341a0f8d460086f23e40b717b0a631f9c4b16a Removing ajaxWrapper import form PluginLoader
+7820db1b86ba3d411966a02dd1eda62986601d08 Using Object destructurin to extract parameters
+b780383174d1cf200741bd8e87f6bda16ffe3549 Remove PluginAPI, add Marathon{Service,Actions}
+```
+
