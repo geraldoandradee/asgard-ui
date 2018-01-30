@@ -3,6 +3,9 @@
 
 ## Changelog
 
+ * 0.12.0
+   > Remocão do código que adicoinava o toke JWT em todos os requests. Agora isso é feito no session-checker-plugin.
+
  * 0.11.0
    > Uso do Semver pra versionamento da imagem docker
    > Cherry-pick do PR 819, que adiciona request pipelines
