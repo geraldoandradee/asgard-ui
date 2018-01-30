@@ -83,3 +83,8 @@ dc3531dc3e938ce1d8c40a9c97b784aa23bbbd04 Changing namespace methods to be all st
 b780383174d1cf200741bd8e87f6bda16ffe3549 Remove PluginAPI, add Marathon{Service,Actions}
 ```
 
+# Commits do PR 819: Implement request filter pipeline
+# https://github.com/mesosphere/marathon-ui/pull/819
+```
+19bfa55a Implementing filter pipelines and exporting to plugins
+```
