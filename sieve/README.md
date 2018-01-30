@@ -3,6 +3,11 @@
 
 ## Changelog
 
+ * 0.11.0
+   > Uso do Semver pra versionamento da imagem docker
+   > Cherry-pick do PR 819, que adiciona request pipelines
+ * 0.0.10
+   > Documentando commits que foram cherry-picked
  * 0.0.9
    > Exportando ajaxWrapper para o objeto Sieve. Depois vamos remover o commit onde ele é exportado diretamente para os plugins
  * 0.0.8
