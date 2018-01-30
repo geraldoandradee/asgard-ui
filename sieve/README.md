@@ -4,7 +4,8 @@
 ## Changelog
 
  * 0.12.0
-   > Remocão do código que adicoinava o toke JWT em todos os requests. Agora isso é feito no session-checker-plugin.
+   > Remoção do código que adicoinava o toke JWT em todos os requests. Agora isso é feito no session-checker-plugin;
+   > Essa versão depende só funciona se o plugin session-checker-plugin for versão 0.2.0+;
 
  * 0.11.0
    > Uso do Semver pra versionamento da imagem docker
