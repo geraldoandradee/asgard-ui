@@ -3,6 +3,9 @@
 
 ## Changelog
 
+ * 0.13.0
+   > IN-2455 IN-2456 Adição de duas novas abas na tela de detahe de uma task, onde podemos visualizar os logs (stdout/stderr)
+
  * 0.12.0
    > Remoção do código que adicoinava o toke JWT em todos os requests. Agora isso é feito no session-checker-plugin;
    > Essa versão depende só funciona se o plugin session-checker-plugin for versão 0.2.0+;

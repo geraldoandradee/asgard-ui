@@ -14,9 +14,13 @@ import TaskMesosUrlComponent from "../components/TaskMesosUrlComponent";
 import TaskFileListComponent from "../components/TaskFileListComponent";
 import HealthStatus from "../constants/HealthStatus";
 
+import TaskLogComponent from "../components/asgard/TaskLogComponent";
+
 var tabsTemplate = [
   {id: "apps/:appId/:taskId", text: "Working Directory"},
-  {id: "apps/:appId/:taskId/volumes", text: "Volumes"}
+  {id: "apps/:appId/:taskId/volumes", text: "Volumes"},
+  {id: "apps/:appId/:taskId/stdout", text: "Stdout"},
+  {id: "apps/:appId/:taskId/stderr", text: "Stderr"}
 ];
 
 var TaskDetailComponent = React.createClass({
@@ -238,7 +242,6 @@ var TaskDetailComponent = React.createClass({
           <dd><TaskMesosUrlComponent task={task} /></dd>
         </dl>
         {this.getTaskHealthComponent()}
-        <hr />
         {this.getTabs(task)}
       </div>
     );
@@ -267,6 +270,10 @@ var TaskDetailComponent = React.createClass({
 
     if (activeTab === "volumes") {
       activeTabId += "/volumes";
+    } else if (activeTab === "stdout") {
+      activeTabId += "/stdout";
+    } else if (activeTab === "stderr") {
+      activeTabId += "/stderr";
     } else if (activeTab != null) {
       activeTabId = activeTab;
     }
@@ -285,7 +292,7 @@ var TaskDetailComponent = React.createClass({
     );
 
     if (volumes == null || volumes.length === 0) {
-      tabs = tabs.slice(0, 1);
+      // tabs = tabs.slice(0, 1);
       volumesTab = null;
     }
 
@@ -298,6 +305,14 @@ var TaskDetailComponent = React.createClass({
             <TaskFileListComponent task={task} />
         </TabPaneComponent>
         {volumesTab}
+        <TabPaneComponent
+            id={tabs[2].id}>
+            <TaskLogComponent task={task} logfile="/stdout"/>
+        </TabPaneComponent>
+        <TabPaneComponent
+            id={tabs[3].id}>
+            <TaskLogComponent task={task} logfile="/stderr"/>
+        </TabPaneComponent>
       </TogglableTabsComponent>
     );
   },
