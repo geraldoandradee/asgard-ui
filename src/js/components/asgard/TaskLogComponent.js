@@ -1,5 +1,5 @@
 
-import Sieve from "../../helpers/Sieve";
+import Bridge from "../../helpers/Bridge";
 import React from "react/addons";
 import config from "../../../config/config";
 import MarathonService from "../../plugin/sdk/services/MarathonService";
@@ -92,7 +92,7 @@ export default React.createClass({
 
   handleDownload() {
     const {task, logfile} = this.props;
-    Sieve.navigateTo(
+    Bridge.navigateTo(
       `${config.apiURL}tasks/${task.id}/files/download?path=${logfile}`
     );
   },
