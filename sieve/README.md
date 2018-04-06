@@ -3,6 +3,10 @@
 
 ## Changelog
 
+ * 0.14.0
+   > Mudança interna para usar o objeto Bridge em vez do Sieve;
+   > Estamos exportando para os plugins os dois objetos: Sieve e Bridge. Isso para podermos atualizar os plugins de forma gradual;
+
  * 0.13.0
    > IN-2455 IN-2456 Adição de duas novas abas na tela de detahe de uma task, onde podemos visualizar os logs (stdout/stderr)
 

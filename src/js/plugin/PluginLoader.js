@@ -1,6 +1,7 @@
 import React from "react/addons";
 
 import Sieve from "../helpers/Sieve";
+import Bridge from "../helpers/Bridge";
 import config from "../config/config";
 
 import URLUtil from "../helpers/URLUtil";
@@ -45,6 +46,7 @@ const PluginLoader = {
         // in "Invariant Violation" errors.
         pluginWindow.marathonPluginInterface = Object.freeze({
           Sieve: Sieve,
+          Bridge: Bridge,
           PluginActions: PluginActions,
           PluginDispatcher: PluginDispatcherProxy.create(pluginId),
           PluginEvents: PluginEvents,
