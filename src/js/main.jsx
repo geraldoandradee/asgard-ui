@@ -5,6 +5,7 @@ import AppPageComponent from "./components/AppPageComponent";
 import PageNotFoundComponent from "./components/PageNotFoundComponent";
 import TabPanesComponent from "./components/TabPanesComponent";
 import Marathon from "./components/Marathon";
+import config from "../config/config.js";
 
 var routes = (
   <Route name="home" path="/" handler={Marathon}>
@@ -22,9 +23,24 @@ var routes = (
   </Route>
 );
 
-Router.run(routes, function (Handler, state) {
-  React.render(
-    <Handler state={state} />,
-    document.getElementById("marathon")
-  );
-});
+function startApp() {
+  Router.run(routes, function (Handler, state) {
+    React.render(
+      <Handler state={state} />,
+      document.getElementById("marathon")
+    );
+  });
+}
+
+fetch("config.json")
+  .then((response) => {
+    return response.json();
+  })
+  .then((jsonData) => {
+    config.apiURL = jsonData.apiURL;
+    startApp();
+  })
+  .catch(() => {
+    startApp();
+  });
+
