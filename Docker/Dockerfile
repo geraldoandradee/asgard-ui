@@ -1,6 +1,6 @@
 FROM docker.sieve.com.br/infra/nodejs541:0.0.1
 
-#Version: 0.15.0
+#Version: 0.16.0-rc1
 #Tag: sieve/infra/asgard-ui
 
 WORKDIR /opt/app
@@ -9,7 +9,7 @@ COPY Docker/files/e /e
 RUN chmod 755 /e
 
 COPY . /opt/app
-COPY Docker/files/config.js /opt/app/src/js/config/
+COPY Docker/files/config.json.template /tmp/
 COPY Docker/files/logo_asgard.png /opt/app/src/img/marathon-logo.png
 RUN npm install \
       && npm install -g gulp \
@@ -26,6 +26,7 @@ COPY Docker/files/authenticated.html /opt/app/dist/authenticated/index.html
 
 ENTRYPOINT ["/e" \
   , "--render-template=/tmp/login.html.template:/opt/app/dist/login/index.html" \
+  , "--render-template=/tmp/config.json.template:/opt/app/dist/config.json" \
   , "--" \
 ]
 
