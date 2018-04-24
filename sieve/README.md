@@ -3,6 +3,9 @@
 
 ## Changelog
 
+ * 0.16.0
+   > URL da API deve ser passada via envvar: `ASGARD_API_BASE_URL`
+
  * 0.14.0
    > Mudança interna para usar o objeto Bridge em vez do Sieve;
    > Estamos exportando para os plugins os dois objetos: Sieve e Bridge. Isso para podermos atualizar os plugins de forma gradual;
@@ -28,6 +31,12 @@
  * 0.0.7
    > UI atualizada para versão `1.1.7`
 
+
+
+## Envs necessárias
+
+ * ASGARD_API_BASE_URL: URL base da API com a qual a UI vai falar. Deve conter uma "/" no final.
+ * SIEVE_LOGIN_REDIRECT: URL para onde o `/login` vai redirecionar. Esse destino é quem inicia o fluxo Oauth2.
 
 ## Fluxo de desenvolvimento
 
