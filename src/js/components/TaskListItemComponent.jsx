@@ -237,12 +237,6 @@ var TaskListItemComponent = React.createClass({
             {status}
           </span>
         </td>
-        <td className="text-center">
-          <TaskFileDownloadComponent task={task} fileName="stderr" />
-        </td>
-        <td className="text-center">
-          <TaskFileDownloadComponent task={task} fileName="stdout" />
-        </td>
         <td className={versionClassSet}>
           <span title={version}>
             {version && new Moment(version).fromNow() || "---"}
