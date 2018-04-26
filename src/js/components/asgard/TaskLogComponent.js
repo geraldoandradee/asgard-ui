@@ -99,7 +99,7 @@ export default React.createClass({
       Bridge.navigateTo(`${config.apiURL}${response.body.download_url}`);
     }).error((data) => {
       console.log(`ERROR ${task.id}, ${logfile}. ${data}`);
-      DialogActions.alert({message: "Falha ao baixar log: ${data.body}"});
+      DialogActions.alert({message: `Falha ao baixar log: ${data.body}`});
     });
   },
 
