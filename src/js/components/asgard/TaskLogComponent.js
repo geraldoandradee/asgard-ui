@@ -3,6 +3,7 @@ import Bridge from "../../helpers/Bridge";
 import React from "react/addons";
 import config from "../../../config/config";
 import MarathonService from "../../plugin/sdk/services/MarathonService";
+import DialogActions from "../../actions/DialogActions";
 
 const APPEND = 1;
 const BLOCK_SIZE = 1024;
@@ -92,9 +93,14 @@ export default React.createClass({
 
   handleDownload() {
     const {task, logfile} = this.props;
-    Bridge.navigateTo(
-      `${config.apiURL}tasks/${task.id}/files/download?path=${logfile}`
-    );
+    const url = `tasks/${task.id}/files/download?path=${logfile}`;
+    MarathonService.request({resource: url}
+    ).success((response) => {
+      Bridge.navigateTo(`${config.apiURL}${response.body.download_url}`);
+    }).error((data) => {
+      console.log(`ERROR ${task.id}, ${logfile}. ${data}`);
+      DialogActions.alert({message: `Falha ao baixar log: ${data.body}`});
+    });
   },
 
   getLogLines() {
