@@ -224,12 +224,6 @@ var TaskListComponent = React.createClass({
                   Status {this.getCaret("status")}
                 </span>
               </th>
-              <th className="text-center">
-                Error Log
-              </th>
-              <th className="text-center">
-                Output Log
-              </th>
               <th className={versionClassSet}>
                 <span onClick={this.sortBy.bind(null, "version")}
                     className={headerClassSet}>
