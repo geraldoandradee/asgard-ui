@@ -3,6 +3,10 @@
 
 ## Changelog
 
+ * 0.17.0
+   > Removendo colunas de stdout/sdterr da listagem de tasks; Isso já não funcionava pois depende de ir direto no meso (!!);
+   > Implementação do novo fluxo de download de logs de uma task;
+
  * 0.16.0
    > URL da API deve ser passada via envvar: `ASGARD_API_BASE_URL`
 
